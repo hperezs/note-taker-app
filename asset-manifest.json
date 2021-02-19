@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/note-taker-app/static/css/main.d2468abf.chunk.css",
-    "main.js": "/note-taker-app/static/js/main.a83729b2.chunk.js",
-    "main.js.map": "/note-taker-app/static/js/main.a83729b2.chunk.js.map",
+    "main.js": "/note-taker-app/static/js/main.0f629b1c.chunk.js",
+    "main.js.map": "/note-taker-app/static/js/main.0f629b1c.chunk.js.map",
     "runtime-main.js": "/note-taker-app/static/js/runtime-main.c6559f07.js",
     "runtime-main.js.map": "/note-taker-app/static/js/runtime-main.c6559f07.js.map",
     "static/css/2.c49baa93.chunk.css": "/note-taker-app/static/css/2.c49baa93.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.c49baa93.chunk.css",
     "static/js/2.60a20091.chunk.js",
     "static/css/main.d2468abf.chunk.css",
-    "static/js/main.a83729b2.chunk.js"
+    "static/js/main.0f629b1c.chunk.js"
   ]
 }
