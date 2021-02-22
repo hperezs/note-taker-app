@@ -4,7 +4,7 @@ This project was designed as a tool for tech support agents at Backstreet Survei
 
 ### How it works 
 
-This is the front-end of the application. It communicates with a back-end REST API hosted on glitch. The API handles data requests and communicates with a MongoDB Atlas database to perform CRUD operations. It is written in Node.JS and uses Express to handle endpoint requests. 
+This is the front-end of the application. The source code is compiled for production and hosted on gh-pages. The app communicates with a back-end REST API hosted on glitch. The API handles data requests and communicates with a MongoDB Atlas database to perform CRUD operations. It is written in Node.JS and uses Express to handle endpoint requests. 
 
 ### Tools / Libraries used
 
@@ -12,3 +12,4 @@ This is the front-end of the application. It communicates with a back-end REST A
 - Bootstrap
 - MongoDB
 - Express
+- react-notifications-component
