@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/note-taker-app/static/css/main.ce9688dd.chunk.css",
+    "main.css": "/note-taker-app/static/css/main.9d08f715.chunk.css",
     "main.js": "/note-taker-app/static/js/main.2c7fba4d.chunk.js",
     "main.js.map": "/note-taker-app/static/js/main.2c7fba4d.chunk.js.map",
     "runtime-main.js": "/note-taker-app/static/js/runtime-main.c6559f07.js",
@@ -12,14 +12,14 @@
     "static/js/3.b5bffd2f.chunk.js.map": "/note-taker-app/static/js/3.b5bffd2f.chunk.js.map",
     "index.html": "/note-taker-app/index.html",
     "static/css/2.c49baa93.chunk.css.map": "/note-taker-app/static/css/2.c49baa93.chunk.css.map",
-    "static/css/main.ce9688dd.chunk.css.map": "/note-taker-app/static/css/main.ce9688dd.chunk.css.map",
+    "static/css/main.9d08f715.chunk.css.map": "/note-taker-app/static/css/main.9d08f715.chunk.css.map",
     "static/js/2.b92e82db.chunk.js.LICENSE.txt": "/note-taker-app/static/js/2.b92e82db.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c6559f07.js",
     "static/css/2.c49baa93.chunk.css",
     "static/js/2.b92e82db.chunk.js",
-    "static/css/main.ce9688dd.chunk.css",
+    "static/css/main.9d08f715.chunk.css",
     "static/js/main.2c7fba4d.chunk.js"
   ]
 }
