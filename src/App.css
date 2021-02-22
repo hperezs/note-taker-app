@@ -1,0 +1,100 @@
+.hidden{
+  display: none;
+}
+
+.svg {
+  max-width: 100%;
+}
+
+.new-note-layout { 
+  border: 1px solid rgba(0,0,0,.125);
+  padding: 0 !important;
+}
+
+label {
+  width: 150px !important;
+}
+
+.label-item {
+  width: 120px;
+}
+
+.new-note-checkbox {
+  position: relative;
+  margin-top: 1rem;
+  margin-left: 0;
+}
+
+.note-checkbox{
+  position: relative;
+  margin-left: 0;
+}
+
+.big-checkbox{
+  width: 20px;
+  height: 20px;
+}
+
+h5{
+  margin: 0 !important;
+}
+
+.btn-warning {
+  background-color: #ff8507;
+  border-color: #ff8507;
+}
+
+.border-light {
+  border-color: #d2d2d2 !important;
+}
+
+.login-box {
+  height: 500px;
+  background-color: #fcfcfc;
+}
+
+.btn-warning:hover {
+  background-color: #cf8c48;
+  border-color: #cf8c48;
+}
+
+.label-item {
+  margin-right: 1em;
+}
+
+textarea.stepsTaken-note, textarea.issue-note {
+  color: #212529;
+}
+
+.clipboard-button, .note-edit-button {
+  cursor: pointer;
+}
+
+.clipboard-button:hover {
+  font-size: 1.5em;
+  transition: font-size 0.25s ease-out;
+}
+
+.note-edit-button:hover {
+  font-size: 1.2em;
+  transition: font-size 0.25s ease-out;
+}
+
+#dropdown-settings {
+  padding: .2rem .5rem;
+}
+
+@media only screen and (max-width: 650px) {
+  .navbar-brand{
+    font-size: 1.10rem;
+  }
+  h1 {
+    font-size: 1.10rem;
+  }
+  h2, h3 {
+    font-size: 1.05rem;
+  }
+  h4, h5 {
+    font-size: 1rem;
+  }
+}
