@@ -33,7 +33,9 @@ class Note extends Component {
         
         this.setState({
             editableNote: new_note
-        })
+        });
+
+        
     }
 
     handleCheckboxChanges(event) {
@@ -56,13 +58,8 @@ class Note extends Component {
     }
 
     cancelChanges() {
-        this.setState({
-            editableNote: this.props.note
-        })
-        console.log('Canceled changes');
-        console.log(this.props.note);
-        this.toggleisEditing();
-        
+        this.props.fetchNotes();
+        this.props.displayNotification('edit-canceled');
     }
 
     saveChanges() {
@@ -95,6 +92,7 @@ class Note extends Component {
 
     componentDidMount() {
         let noteData = this.props.note;
+        this.baseState = noteData;
         this.setState({
             editableNote: noteData
         })

@@ -9,7 +9,6 @@ class NewNote extends Component {
             orderNumber: '',
             issue: '',
             stepsTaken: '',
-            date: '',
             hasRMA: false,
             hasAdvancedReplacement: false
         }
@@ -38,7 +37,7 @@ class NewNote extends Component {
 
         var date = new Date();
         let current_time = (date.getMonth() + 1) + '-' + date.getDate() + '-' + date.getFullYear();
-        console.log(current_time);
+        
         let new_note = {
             customerName: this.state.customerName,
             orderNumber: this.state.orderNumber,
@@ -52,17 +51,18 @@ class NewNote extends Component {
 
         console.log(new_note);
 
-        this.props.addNote(new_note);
-
         this.setState({
             customerName: '',
             orderNumber: '',
             issue: '',
             stepsTaken: '',
-            date: ''
-        })
-
-        this.props.toggleDisplay();
+            hasRMA: false,
+            hasAdvancedReplacement: false
+        }, () => {
+            console.log(this.state);
+            this.props.addNote(new_note);
+            this.props.toggleDisplay();
+        });
     }
 
     
@@ -99,6 +99,7 @@ class NewNote extends Component {
                                         <input onChange={
                                                 this.handleChanges
                                             }
+                                            value={this.state.customerName}
                                             type="text"
                                             className="form-control"
                                             name="customerName"
@@ -112,6 +113,7 @@ class NewNote extends Component {
                                         <input onChange={
                                                 this.handleChanges
                                             }
+                                            value={this.state.orderNumber}
                                             type="text"
                                             className="form-control"
                                             name="orderNumber"
@@ -126,6 +128,7 @@ class NewNote extends Component {
                                         <textarea onChange={
                                                 this.handleChanges
                                             }
+                                            value={this.state.issue}
                                             className="form-control"
                                             rows="4"
                                             cols="70"
@@ -141,6 +144,7 @@ class NewNote extends Component {
                                         <textarea onChange={
                                                 this.handleChanges
                                             }
+                                            value={this.state.stepsTaken}
                                             className="form-control"
                                             rows="4"
                                             cols="70"
@@ -153,14 +157,14 @@ class NewNote extends Component {
                                     <label class="form-check-label col-form-label">
                                         RMA created
                                     </label>
-                                    <input onChange={this.handleCheckboxChanges} class="big-checkbox new-note-checkbox form-check-input" type="checkbox" value="" name="hasRMA"/>
+                                    <input onChange={this.handleCheckboxChanges} class="big-checkbox new-note-checkbox form-check-input" type="checkbox" checked={this.state.hasRMA} name="hasRMA"/>
                                 </div>
 
                                 <div className="form-group form-row">
                                     <label class="form-check-label col-form-label">
                                         Advanced replacement issued
                                     </label>
-                                    <input onChange={this.handleCheckboxChanges} class="big-checkbox new-note-checkbox form-check-input" type="checkbox" value="" name="hasAdvancedReplacement"/>
+                                    <input onChange={this.handleCheckboxChanges} class="big-checkbox new-note-checkbox form-check-input" type="checkbox" checked={this.state.hasAdvancedReplacement} name="hasAdvancedReplacement"/>
                                 </div>
 
                                 <div className="form-group form-row justify-content-center">

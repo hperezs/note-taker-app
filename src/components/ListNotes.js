@@ -59,6 +59,7 @@ class ListNotes extends Component {
                                         key={note.noteId}
                                         displayNotification={this.props.displayNotification}
                                         userName={this.props.userName}
+                                        fetchNotes={this.props.fetchNotes}
                                         />
                                 ))
                             } 
