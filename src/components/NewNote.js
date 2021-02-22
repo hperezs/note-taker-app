@@ -84,7 +84,6 @@ class NewNote extends Component {
                             <form className="appointment-form" noValidate
                                 onSubmit={e => {
                                     this.saveNote(e);
-                                    this.props.displayNotification('note-added');
                                 }}>
 
                                 <div className="form-group form-row">

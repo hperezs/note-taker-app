@@ -88,7 +88,6 @@ class Note extends Component {
     evaluateDelete() {
         if(this.props.userName == this.props.note.techAgent){
             this.props.deleteNote(this.props.note);
-            this.props.displayNotification('note-deleted');
         } else {
             this.props.displayNotification('unable-to-delete');
         }
@@ -128,7 +127,7 @@ class Note extends Component {
                     <div className="order-number d-flex mb-3">
                         <span className="label-item text-secondary">Order number:  </span>
                         <span>{this.props.note.orderNumber}</span>
-                        <i onClick={e => this.copyNote()} className="clipboard-button far fa-copy ml-auto fa-lg"></i>
+                        <i onClick={e => this.copyNote()} className="clipboard-button far fa-copy ml-auto fa-lg" title="Copy to clipboard"></i>
                     </div>
 
                     <div className="order-issue d-flex mb-3">

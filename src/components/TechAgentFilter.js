@@ -46,10 +46,6 @@ class TechAgentFilter extends Component {
         this.props.filterByAgent(name);
     }
 
-    componentDidUpdate(){
-        console.log(this.state);
-    }
-
     render() {
         if(!this.state.techAgents) {
             this.fetchTechAgents();
