@@ -1,5 +1,5 @@
-import { withAuth0 } from '@auth0/auth0-react';
 import React, { Component } from 'react';
+import Skeleton from 'react-loading-skeleton';
 
 class Note extends Component {
     constructor() {
@@ -99,7 +99,47 @@ class Note extends Component {
     }
 
     render() {
-        return(
+        if(this.props.isLoading) {
+            return(
+                <div className="note-layout border-bottom row py-3 my-3 col-12">
+                    <div className="col-12">
+                        <div className="note-head d-flex mb-3">
+                            <Skeleton />
+                        </div>
+                        
+                        <div className="order-number d-flex mb-3">
+                            <span className="label-item text-secondary"><Skeleton /></span>
+                            <span className="label-item"><Skeleton /></span>
+                        </div>
+
+                        <div className="order-issue d-flex mb-3">
+                            <span className="label-item text-secondary"><Skeleton /> </span>
+                            <div className="w-75">
+                                <Skeleton count={4} />
+                            </div>
+                        </div>
+                        
+                        <div className="order-issue d-flex mb-3">
+                            <span className="label-item text-secondary"><Skeleton /> </span>
+                            <div className="w-75">
+                                <Skeleton count={4} />
+                            </div>
+                        </div>
+
+
+                        <div className="d-flex mb-3">
+                            <span className="label-item text-secondary"><Skeleton /></span>
+                            <span className="label-item text-secondary"><Skeleton /></span>
+                        </div>
+
+                        <div className="d-flex mb-3">
+                            <span className="label-item text-secondary"><Skeleton /></span>
+                            <span className="label-item text-secondary"><Skeleton /></span>
+                        </div>
+                    </div>
+                </div>
+            )
+        } else return(
             <div className="note-layout border-bottom row py-3 my-3 col-12">
                 <div className="col-12">
                     <div className="note-head d-flex mb-3">

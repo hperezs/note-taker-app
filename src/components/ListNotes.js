@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Note from './Note';
 import SearchNotes from './SearchNotes';
-import Loading from './Loading';
 import TechAgentFilter from './TechAgentFilter';
+import Skeleton from 'react-loading-skeleton';
 
 class ListNotes extends Component {
     constructor() {
@@ -23,7 +23,20 @@ class ListNotes extends Component {
 
     render() {
         if (this.props.isLoading) {
-            return <Loading />
+            return (
+                <article className="list-appointments-layout py-3 mb-5">
+                    <section className="container col-12 card-header">
+                        <div className="">
+                            <Skeleton height={50} />
+                        </div>
+
+                        <div className="note-list row justify-content-center card-body">
+                            <Note isLoading={true}/>
+                        </div>
+
+                    </section>
+                </article>
+            )
         } else {
             return(
                 <article className="list-appointments-layout py-3 mb-5">

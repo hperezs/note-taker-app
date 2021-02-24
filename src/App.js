@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import NewNote from './components/NewNote';
 import ListNotes from './components/ListNotes';
 import { withAuth0 } from '@auth0/auth0-react';
-import Loading from './components/Loading';
 import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import Nav from './components/Nav';
@@ -24,7 +23,7 @@ class App extends Component {
       queryText: '',
       techAgentQuery: '',
       isLoading: true,
-      isUserAuthorized: null,
+      isUserAuthorized: 'unknown',
       userName: ''
     }
 
@@ -53,7 +52,6 @@ class App extends Component {
         })
 
         this.setState({ notes: temp_notes, lastIndex: index, isLoading: false });
-        console.log(this.state);
       })
     })
   }
@@ -135,20 +133,42 @@ class App extends Component {
 
    getIsUserAuthorized() {
     let url = 'https://morning-anchorage-80357.herokuapp.com/https://note-taker-api.glitch.me/is-authorized?email=' + this.props.auth0.user.email;
-    return fetch(url).then(response => {
+
+    fetch(url).then(response => {
         response.json().then(data => {
         this.setState({
-          isUserAuthorized: data.isAuthorized
+          isUserAuthorized: data.isAuthorized,
+          isLoading: false
+          })
         })
-      })
-    });
+      });  
   }
 
   filterByAgent(name) {
-    console.log('Calling filter by agent');
     this.setState({
       techAgentQuery: name
     })
+  }
+
+  filterNotes(notes) {
+    // Filter by the query text and techAgent
+    let filteredNotes = notes.filter(note => {
+      return(
+        (note['customerName'].toLowerCase().includes(this.state.queryText.toLowerCase()) ||
+        note['orderNumber'].toLowerCase().includes(this.state.queryText.toLowerCase()) ||
+        note['issue'].toLowerCase().includes(this.state.queryText.toLowerCase()) ||
+        note['stepsTaken'].toLowerCase().includes(this.state.queryText.toLowerCase()) ||
+        note['date'].toLowerCase().includes(this.state.queryText.toLowerCase())) &&
+        (note['techAgent'] == this.state.techAgentQuery || this.state.techAgentQuery == 'All')
+      )
+    })
+
+    // Sort notes by date
+    filteredNotes.sort((a, b) => {
+      return Date.parse(b.date) - Date.parse(a.date); 
+    })
+
+    return filteredNotes;
   }
 
   componentDidUpdate() {
@@ -165,45 +185,25 @@ class App extends Component {
       })
     }
 
-    if(this.props.auth0.isAuthenticated && this.state.isUserAuthorized == null) {
+    if(this.props.auth0.isAuthenticated && this.state.isUserAuthorized == 'unknown') {
       this.getIsUserAuthorized();
     }
   }
 
   render() {
     const { isAuthenticated, isLoading, loginWithRedirect } = this.props.auth0;
-    if(isLoading) {
-      return <Loading />
-    } 
-    else if (!isAuthenticated) {
+
+    if (!isAuthenticated && !isLoading) {
       return (
           <>
             {loginWithRedirect()}
           </>
         )
-    } else if (this.state.isUserAuthorized == null) {
-      return <Loading />
-    } else if (!this.state.isUserAuthorized) {
+    } else if (!this.state.isUserAuthorized && !isLoading && !this.state.isLoading && this.state.isUserAuthorized != 'unknown') {
       return <NotAuthorized />
     } else {
-      // Filter notes using the search query and the techAgentQuery
-      let filteredNotes = this.state.notes;
-      filteredNotes = filteredNotes.filter(note => {
-        return(
-          (note['customerName'].toLowerCase().includes(this.state.queryText.toLowerCase()) ||
-          note['orderNumber'].toLowerCase().includes(this.state.queryText.toLowerCase()) ||
-          note['issue'].toLowerCase().includes(this.state.queryText.toLowerCase()) ||
-          note['stepsTaken'].toLowerCase().includes(this.state.queryText.toLowerCase()) ||
-          note['date'].toLowerCase().includes(this.state.queryText.toLowerCase())) &&
-          (note['techAgent'] == this.state.techAgentQuery || this.state.techAgentQuery == 'All')
-        )
-      })
 
-      // Sort notes by date
-      filteredNotes.sort((a, b) => {
-        return Date.parse(b.date) - Date.parse(a.date); 
-      })
-
+      let filteredNotes = this.filterNotes(this.state.notes);
 
       return (
         <>
@@ -215,10 +215,12 @@ class App extends Component {
               listDisplay={this.state.listDisplay}
               toggleList={this.toggleList}
               userName={this.state.userName}
+              isLoading={this.state.isLoading || isLoading}
             />
             <GetStarted 
               formDisplay={this.state.formDisplay}
               listDisplay={this.state.listDisplay}
+              isLoading={this.state.isLoading || isLoading}
             />
             <NewNote 
               formDisplay={this.state.formDisplay}
@@ -233,7 +235,7 @@ class App extends Component {
               toggleList={this.toggleList}
               searchNotes={this.searchNotes}
               deleteNote={this.deleteNote}
-              isLoading={this.state.isLoading}
+              isLoading={this.state.isLoading || isLoading}
               editNote={this.editNote}
               fetchNotes={this.fetchNotes}
               displayNotification={displayNotification}

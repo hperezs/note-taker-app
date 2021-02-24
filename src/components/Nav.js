@@ -1,12 +1,21 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import Settings from './Settings';
+import Skeleton from 'react-loading-skeleton';
 
-const Nav = ({userName, newNoteBtnDisplay, toggleDisplay, listDisplay, toggleList}) => {
+const Nav = ({userName, newNoteBtnDisplay, toggleDisplay, listDisplay, toggleList, isLoading}) => {
     const { logout } = useAuth0();
 
-    return (
+    if(isLoading){
+        return (
+            <nav className="mb-5">
+                <Skeleton height={50} />
+            </nav>
+            
+        )
+    } else return (
         <nav className="navbar navbar-light bg-light mb-5">
+            
             <span className="navbar-brand mb-0 h1 mr-auto">Welcome, {userName}</span>
 
             <button 

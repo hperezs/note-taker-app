@@ -1,7 +1,7 @@
 import {withAuth0} from '@auth0/auth0-react';
 import React, {Component} from 'react';
 import {Dropdown, Form} from 'react-bootstrap';
-import Loading from './Loading';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 class TechAgentFilter extends Component {
     constructor() {
@@ -50,9 +50,9 @@ class TechAgentFilter extends Component {
         if(!this.state.techAgents) {
             this.fetchTechAgents();
             return(
-                <button className="btn btn-info">
-                    Filter By Tech Agent
-                </button>
+                <SkeletonTheme color="#17a2b8" highlightColor="#d9f8fc">
+                    <Skeleton width={180} height={38} duration={1} />
+                </SkeletonTheme>
             )
         } else {
             return (
