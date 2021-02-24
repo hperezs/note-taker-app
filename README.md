@@ -13,3 +13,4 @@ This is the front-end of the application. The source code is compiled for produc
 - MongoDB
 - Express
 - react-notifications-component
+- react-loading-skeleton
