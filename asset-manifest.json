@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/note-taker-app/static/css/main.df47e6d6.chunk.css",
-    "main.js": "/note-taker-app/static/js/main.9ced330f.chunk.js",
-    "main.js.map": "/note-taker-app/static/js/main.9ced330f.chunk.js.map",
-    "runtime-main.js": "/note-taker-app/static/js/runtime-main.4bf7af4a.js",
-    "runtime-main.js.map": "/note-taker-app/static/js/runtime-main.4bf7af4a.js.map",
+    "main.js": "/note-taker-app/static/js/main.b1837744.chunk.js",
+    "main.js.map": "/note-taker-app/static/js/main.b1837744.chunk.js.map",
+    "runtime-main.js": "/note-taker-app/static/js/runtime-main.94eb7246.js",
+    "runtime-main.js.map": "/note-taker-app/static/js/runtime-main.94eb7246.js.map",
     "static/css/2.c49baa93.chunk.css": "/note-taker-app/static/css/2.c49baa93.chunk.css",
-    "static/js/2.ceb60dd2.chunk.js": "/note-taker-app/static/js/2.ceb60dd2.chunk.js",
-    "static/js/2.ceb60dd2.chunk.js.map": "/note-taker-app/static/js/2.ceb60dd2.chunk.js.map",
-    "static/js/3.782ced27.chunk.js": "/note-taker-app/static/js/3.782ced27.chunk.js",
-    "static/js/3.782ced27.chunk.js.map": "/note-taker-app/static/js/3.782ced27.chunk.js.map",
+    "static/js/2.11fc9529.chunk.js": "/note-taker-app/static/js/2.11fc9529.chunk.js",
+    "static/js/2.11fc9529.chunk.js.map": "/note-taker-app/static/js/2.11fc9529.chunk.js.map",
+    "static/js/3.c9ba832b.chunk.js": "/note-taker-app/static/js/3.c9ba832b.chunk.js",
+    "static/js/3.c9ba832b.chunk.js.map": "/note-taker-app/static/js/3.c9ba832b.chunk.js.map",
     "index.html": "/note-taker-app/index.html",
     "static/css/2.c49baa93.chunk.css.map": "/note-taker-app/static/css/2.c49baa93.chunk.css.map",
     "static/css/main.df47e6d6.chunk.css.map": "/note-taker-app/static/css/main.df47e6d6.chunk.css.map",
-    "static/js/2.ceb60dd2.chunk.js.LICENSE.txt": "/note-taker-app/static/js/2.ceb60dd2.chunk.js.LICENSE.txt"
+    "static/js/2.11fc9529.chunk.js.LICENSE.txt": "/note-taker-app/static/js/2.11fc9529.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.4bf7af4a.js",
+    "static/js/runtime-main.94eb7246.js",
     "static/css/2.c49baa93.chunk.css",
-    "static/js/2.ceb60dd2.chunk.js",
+    "static/js/2.11fc9529.chunk.js",
     "static/css/main.df47e6d6.chunk.css",
-    "static/js/main.9ced330f.chunk.js"
+    "static/js/main.b1837744.chunk.js"
   ]
 }
