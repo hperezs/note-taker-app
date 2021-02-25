@@ -25,6 +25,8 @@ class TechAgentFilter extends Component {
     }
 
     selectDefault(data) {
+        console.log('Select default called. Data: ');
+        console.log(data);
         data.map(document => {
             if (document.name == this.props.userName){
                 this.setState({

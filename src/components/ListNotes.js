@@ -22,7 +22,7 @@ class ListNotes extends Component {
     }
 
     render() {
-        if (this.props.isLoading) {
+        if (this.props.isLoading && this.props.listDisplay) {
             return (
                 <article className="list-appointments-layout py-3 mb-5">
                     <section className="container col-12 card-header">

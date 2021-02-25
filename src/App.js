@@ -8,7 +8,7 @@ import 'react-notifications-component/dist/theme.css';
 import Nav from './components/Nav';
 import GetStarted from './components/GetStarted';
 import NotAuthorized from './components/NotAuthorized';
-import displayNotification from './notifications';
+import displayNotification from './lib/notifications';
 
 
 class App extends Component {
@@ -68,6 +68,7 @@ class App extends Component {
   }
 
   async addNote(note) {
+    displayNotification('adding-note');
     let response = await fetch('https://morning-anchorage-80357.herokuapp.com/https://note-taker-api.glitch.me/new-note', {
       method: "POST",
       body: JSON.stringify(note),
