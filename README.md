@@ -18,4 +18,4 @@ This is the front-end of the application. The source code is compiled for produc
 
 Here's a quick demo overview of the app: 
 
-![demo](https://cdn.glitch.com/d90d4813-3a49-40ea-b613-2ba6d3f096b0%2Fnote-taker-demo.gif?v=1614375077514)
+<img src="https://cdn.glitch.com/d90d4813-3a49-40ea-b613-2ba6d3f096b0%2Fnote-taker-demo.gif?v=1614375077514" width="100" />
