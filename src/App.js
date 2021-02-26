@@ -9,6 +9,7 @@ import Nav from './components/Nav';
 import GetStarted from './components/GetStarted';
 import NotAuthorized from './components/NotAuthorized';
 import displayNotification from './lib/notifications';
+import { LinearProgress } from '@material-ui/core';
 
 
 class App extends Component {
@@ -24,7 +25,8 @@ class App extends Component {
       techAgentQuery: '',
       isLoading: true,
       isUserAuthorized: 'unknown',
-      userName: ''
+      userName: '',
+      showLinearProgress: false
     }
 
     this.fetchNotes = this.fetchNotes.bind(this);
@@ -39,7 +41,8 @@ class App extends Component {
 
   fetchNotes() {
     this.setState({
-      isLoading: true
+      isLoading: true,
+      showLinearProgress: true
     });
 
     fetch('https://morning-anchorage-80357.herokuapp.com/https://note-taker-api.glitch.me/notes').then(response => {
@@ -51,7 +54,12 @@ class App extends Component {
           return note;
         })
 
-        this.setState({ notes: temp_notes, lastIndex: index, isLoading: false });
+        this.setState({ 
+          notes: temp_notes, 
+          lastIndex: index, 
+          isLoading: false, 
+          showLinearProgress: false 
+        });
       })
     })
   }
@@ -68,7 +76,9 @@ class App extends Component {
   }
 
   async addNote(note) {
-    displayNotification('adding-note');
+    this.setState({
+      showLinearProgress: true
+    })
     let response = await fetch('https://morning-anchorage-80357.herokuapp.com/https://note-taker-api.glitch.me/new-note', {
       method: "POST",
       body: JSON.stringify(note),
@@ -77,6 +87,9 @@ class App extends Component {
 
     if(response.status == "200") {
       displayNotification('note-added');
+      this.setState({
+        showLinearProgress: false
+      })
     } else {
       displayNotification('unknown-error');
     }
@@ -85,6 +98,9 @@ class App extends Component {
   }
 
   async deleteNote(note) {
+    this.setState({
+      showLinearProgress: true
+    })
     let url = 'https://morning-anchorage-80357.herokuapp.com/https://note-taker-api.glitch.me/delete-note?id=';
     url = url.concat(note["_id"]);
   
@@ -94,6 +110,9 @@ class App extends Component {
 
     if (response.status == 200) {
       displayNotification('note-deleted');
+      this.setState({
+        showLinearProgress: false
+      })
     } else {
       displayNotification('unknown-error');
     }
@@ -102,6 +121,9 @@ class App extends Component {
   }
 
   async editNote(changes, id) {
+    this.setState({
+      showLinearProgress: true
+    })
     let url = 'https://morning-anchorage-80357.herokuapp.com/https://note-taker-api.glitch.me/edit-note?id=';
     url = url.concat(id);
 
@@ -113,6 +135,9 @@ class App extends Component {
 
     if (response.status == 200) {
       displayNotification('note-edited');
+      this.setState({
+        showLinearProgress: false
+      })
     } else {
       displayNotification('unknown-error');
     }
@@ -216,33 +241,37 @@ class App extends Component {
               listDisplay={this.state.listDisplay}
               toggleList={this.toggleList}
               userName={this.state.userName}
-              isLoading={this.state.isLoading || isLoading}
+              isLoading={isLoading}
             />
-            <GetStarted 
-              formDisplay={this.state.formDisplay}
-              listDisplay={this.state.listDisplay}
-              isLoading={this.state.isLoading || isLoading}
-            />
-            <NewNote 
-              formDisplay={this.state.formDisplay}
-              toggleDisplay={this.toggleDisplay}
-              addNote={this.addNote}
-              displayNotification={displayNotification}
-              userName={this.state.userName}
-            />
-            <ListNotes
-              notes={filteredNotes}
-              listDisplay={this.state.listDisplay}
-              toggleList={this.toggleList}
-              searchNotes={this.searchNotes}
-              deleteNote={this.deleteNote}
-              isLoading={this.state.isLoading || isLoading}
-              editNote={this.editNote}
-              fetchNotes={this.fetchNotes}
-              displayNotification={displayNotification}
-              filterByAgent={this.filterByAgent}
-              userName={this.state.userName}
-            />
+            <div className={this.state.showLinearProgress ? '' : 'hidden'}><LinearProgress /></div>
+            <section className="mt-5">
+              <GetStarted 
+                formDisplay={this.state.formDisplay}
+                listDisplay={this.state.listDisplay}
+                isLoading={this.state.isLoading || isLoading}
+              />
+              <NewNote 
+                formDisplay={this.state.formDisplay}
+                toggleDisplay={this.toggleDisplay}
+                addNote={this.addNote}
+                displayNotification={displayNotification}
+                userName={this.state.userName}
+              />
+              <ListNotes
+                notes={filteredNotes}
+                listDisplay={this.state.listDisplay}
+                toggleList={this.toggleList}
+                searchNotes={this.searchNotes}
+                deleteNote={this.deleteNote}
+                isLoading={this.state.isLoading || isLoading}
+                editNote={this.editNote}
+                fetchNotes={this.fetchNotes}
+                displayNotification={displayNotification}
+                filterByAgent={this.filterByAgent}
+                userName={this.state.userName}
+              />
+            </section>
+            
           </main>
         </>
       );

@@ -52,7 +52,7 @@ class TechAgentFilter extends Component {
         if(!this.state.techAgents) {
             this.fetchTechAgents();
             return(
-                <SkeletonTheme color="#17a2b8" highlightColor="#d9f8fc">
+                <SkeletonTheme color="#007bff">
                     <Skeleton width={180} height={38} duration={1} />
                 </SkeletonTheme>
             )

@@ -8,13 +8,13 @@ const Nav = ({userName, newNoteBtnDisplay, toggleDisplay, listDisplay, toggleLis
 
     if(isLoading){
         return (
-            <nav className="mb-5">
+            <nav>
                 <Skeleton height={50} />
             </nav>
             
         )
     } else return (
-        <nav className="navbar navbar-light bg-light mb-5">
+        <nav className="navbar navbar-light bg-light">
             
             <span className="navbar-brand mb-0 h1 mr-auto">Welcome, {userName}</span>
 

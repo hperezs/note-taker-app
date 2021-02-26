@@ -16,6 +16,7 @@ class NewNote extends Component {
         this.handleChanges = this.handleChanges.bind(this);
         this.handleCheckboxChanges = this.handleCheckboxChanges.bind(this);
         this.saveNote = this.saveNote.bind(this);
+        this.cancelNote = this.cancelNote.bind(this);
     }
 
     handleChanges(event) {
@@ -59,8 +60,20 @@ class NewNote extends Component {
             hasRMA: false,
             hasAdvancedReplacement: false
         }, () => {
-            console.log(this.state);
             this.props.addNote(new_note);
+            this.props.toggleDisplay();
+        });
+    }
+
+    cancelNote() {
+        this.setState({
+            customerName: '',
+            orderNumber: '',
+            issue: '',
+            stepsTaken: '',
+            hasRMA: false,
+            hasAdvancedReplacement: false
+        }, () => {
             this.props.toggleDisplay();
         });
     }
@@ -169,9 +182,7 @@ class NewNote extends Component {
 
                                 <div className="form-group form-row justify-content-center">
                                     <button className="btn btn-danger mx-3"
-                                        onClick={
-                                            this.props.toggleDisplay
-                                        }
+                                        onClick={e => this.cancelNote()}
                                         type="reset">Cancel</button>
                                     <button className="btn btn-success" type="submit">Save</button>
                                 </div>

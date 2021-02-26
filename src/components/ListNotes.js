@@ -31,7 +31,9 @@ class ListNotes extends Component {
                         </div>
 
                         <div className="note-list row justify-content-center card-body">
-                            <Note isLoading={true}/>
+                            <Note isLoading={true} />
+                            <Note isLoading={true} />
+                            <Note isLoading={true} />
                         </div>
 
                     </section>
