@@ -10,6 +10,7 @@ This is the front-end of the application. The source code is compiled for produc
 
 - React 
 - Bootstrap
+- Auth0
 - MongoDB
 - Express
 - react-notifications-component
