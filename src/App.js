@@ -17,7 +17,6 @@ class App extends Component {
     super();
     this.state = {
       notes: [],
-      lastIndex: 0,
       formDisplay: false,
       newNoteBtnDisplay: true,
       listDisplay: false,
@@ -47,18 +46,11 @@ class App extends Component {
 
     fetch('https://morning-anchorage-80357.herokuapp.com/https://note-taker-api.glitch.me/notes').then(response => {
       response.json().then(data => {
-        let index = 0;
-        const temp_notes = data.map(note => {
-          note.noteId = index;
-          index += 1;
-          return note;
-        })
-
         this.setState({ 
-          notes: temp_notes, 
-          lastIndex: index, 
+          notes: data,
           isLoading: false, 
-          showLinearProgress: false 
+          showLinearProgress: false,
+          queryText: ''
         });
       })
     })
